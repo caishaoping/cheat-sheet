@@ -40,4 +40,6 @@ vagrant@master-1:~$ kubectl get nodes -o json | jq '.items[] | {name: .metadata.
 
 jq cheat sheet link:  https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4
 
+wget -qO- 10.0.1.175:80
+
 
