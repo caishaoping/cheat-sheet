@@ -1,3 +1,43 @@
-kubectl get nodes -o yaml | egrep '\sname:|cpu:|memory:'
+kubectl get nodes -o yaml | egrep '\sname:|cpu:|memory:' to find out node's cpu and memory, note "egrep" for extended regex grep and it should be replaced by grep -E option
+
+
+vagrant@master-1:~$ kubectl get nodes -o yaml | grep -E '\sname:|cpu:|memory:'
+    name: master-1
+      cpu: "2"
+      memory: 1938300Ki
+      cpu: "2"
+      memory: 2040700Ki
+    name: worker-1
+      cpu: "1"
+      memory: 390212Ki
+      cpu: "1"
+      memory: 492612Ki
+
+
 kubectl get nodes -o json | jq '.items[] | {name: .metadata.name, cap: .status.capacity}'
+
+vagrant@master-1:~$ kubectl get nodes -o json | jq '.items[] | {name: .metadata.name, cap: .status.capacity}'
+{
+  "name": "master-1",
+  "cap": {
+    "cpu": "2",
+    "ephemeral-storage": "40593612Ki",
+    "hugepages-2Mi": "0",
+    "memory": "2040700Ki",
+    "pods": "110"
+  }
+}
+{
+  "name": "worker-1",
+  "cap": {
+    "cpu": "1",
+    "ephemeral-storage": "40593612Ki",
+    "hugepages-2Mi": "0",
+    "memory": "492612Ki",
+    "pods": "110"
+  }
+}
+
+jq cheat sheet link:  https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4
+
 
