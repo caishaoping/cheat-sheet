@@ -38,6 +38,17 @@ vagrant@master-1:~$ kubectl get nodes -o json | jq '.items[] | {name: .metadata.
   }
 }
 
+kubectl run -it --rm --restart=Never busybox --image=gcr.io/google-containers/busybox sh
+
+kubectl exec <POD-NAME> -c <CONTAINER-NAME> -- <COMMAND>
+
+kubectl create deployment hostnames --image=k8s.gcr.io/serve_hostname
+
+kubectl scale deployment hostnames --replicas=3
+
+kubectl expose deployment hostnames --port=80 --target-port=9376
+
+
 jq cheat sheet link:  https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8fa4
 
 wget -qO- 10.0.1.175:80
