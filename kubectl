@@ -1,3 +1,9 @@
+vagrant@master-1:~$ kubectl get pods -l app=hostnames -o go-template='{{range .items}}{{.status.podIP}}{{"\n"}}{{end}}'
+192.168.xx.55
+192.168.xx.44
+192.168.xx.61
+
+
 kubectl get nodes -o yaml | egrep '\sname:|cpu:|memory:' to find out node's cpu and memory, note "egrep" for extended regex grep and it should be replaced by grep -E option
 
 
