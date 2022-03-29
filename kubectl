@@ -60,3 +60,8 @@ jq cheat sheet link:  https://gist.github.com/olih/f7437fb6962fb3ee9fe95bda8d2c8
 wget -qO- 10.0.1.175:80
 
 
+To get a list of all API resources which can/cannot be put in namespaces:
+kubectl api-resources --namespaced=true | head
+kubectl api-resources --namespaced=false | head
+
+
