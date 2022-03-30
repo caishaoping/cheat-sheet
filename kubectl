@@ -67,7 +67,11 @@ kubectl api-resources --namespaced=false | head
 To debug pod with multi-containers:
 kubectl exec -it POD1 --container CONTAINER1 -- /bin/bash
 kubectl exec -it POD1 --container CONTAINER2 -- /bin/bash
+
 To debug pod with single container running:
 kubectl exec -it POD1 -- /bin/bash
+
+Immediately force deletion of pod:
+kubectl delete pod POD1 --grace-period=0 --force
 
 
