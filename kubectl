@@ -64,4 +64,10 @@ To get a list of all API resources which can/cannot be put in namespaces:
 kubectl api-resources --namespaced=true | head
 kubectl api-resources --namespaced=false | head
 
+To debug pod with multi-containers:
+kubectl exec -it POD1 --container CONTAINER1 -- /bin/bash
+kubectl exec -it POD1 --container CONTAINER2 -- /bin/bash
+To debug pod with single container running:
+kubectl exec -it POD1 -- /bin/bash
+
 
