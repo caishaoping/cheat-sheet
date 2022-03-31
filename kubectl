@@ -75,3 +75,14 @@ Immediately force deletion of pod:
 kubectl delete pod POD1 --grace-period=0 --force
 
 
+Deploy and rollement:
+kubectl set image deployment DEPLOY1 hello-world=new-image-version --record
+kubectl apply -f hello-worlk.yaml --record
+
+Check status of deployment:
+kubectl rollout status deployment DEPLOY1            if success, it exists 0.   if "echo $?" then, 0
+kubectl describe deployment DEPLOY1
+
+Pause a rollout of deployment:
+kubectl rollout pause deployment DEPLOY1
+
