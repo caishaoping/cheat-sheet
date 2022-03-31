@@ -86,3 +86,27 @@ kubectl describe deployment DEPLOY1
 Pause a rollout of deployment:
 kubectl rollout pause deployment DEPLOY1
 
+Check rollout history:
+kubectl rollout history deployment DEPLOY1
+
+undo to previous deployment:
+kubectl rollout undo deployment DEPLOY1
+
+rollback to one revision:
+kubectl rollout undo deployment DEPLOY1 --to-revision=1
+
+restart a deployment: used when new environment changes require restart of PODs to sync up, in the case, new replicateSet will be created for restarted PODs
+kubectl rollout restart deployment DEPLOY1
+
+
+
+
+
+
+
+
+
+
+
+
+
