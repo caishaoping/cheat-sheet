@@ -98,6 +98,8 @@ kubectl rollout undo deployment DEPLOY1 --to-revision=1
 restart a deployment: used when new environment changes require restart of PODs to sync up, in the case, new replicateSet will be created for restarted PODs
 kubectl rollout restart deployment DEPLOY1
 
+To find my first pod's name for my hello-world pods:
+MYPOD=$(kubectl get pods -l app=hello-world | grep hello-world | head -n 1 | awk '{print $1}')
 
 
 
