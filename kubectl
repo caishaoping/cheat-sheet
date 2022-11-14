@@ -101,6 +101,107 @@ kubectl rollout restart deployment DEPLOY1
 To find my first pod's name for my hello-world pods:
 MYPOD=$(kubectl get pods -l app=hello-world | grep hello-world | head -n 1 | awk '{print $1}')
 
+To find out pod's status, like "Running":
+kubectl get pod mypod -n mynamespace -o json | jq .status.phase
+"Running"
+
+alias k=kubectl                         # will already be pre-configured
+
+export do="--dry-run=client -o yaml"    # k create deploy nginx --image=nginx $do
+
+export now="--force --grace-period 0"   # k delete pod x $now
+
+Vim
+The following settings will already be configured in your real exam environment in ~/.vimrc.
+set tabstop=2
+set expandtab
+set shiftwidth=2
+
+docker command:
+
+
+helm command:
+
+Helm Chart: Kubernetes YAML template-files combined into a single package, Values allow customisation
+
+Helm Release: Installed instance of a Chart
+
+Helm Values: Allow to customise the YAML template-files in a Chart when creating a Release
+
+➜ helm -n mercury ls
+
+➜ helm -n mercury uninstall internal-issue-report-apiv1
+release "internal-issue-report-apiv1" uninstalled
+
+➜ helm repo list
+NAME    URL                               
+bitnami https://charts.bitnami.com/bitnami
+
+➜ helm repo update
+
+➜ helm search repo nginx
+
+➜ helm -n mercury upgrade internal-issue-report-apiv2 bitnami/nginx
+
+➜ helm -n mercury ls -a
+
+vim:
+To indent multiple lines using vim you should set the shiftwidth using :set shiftwidth=2. Then mark multiple lines using Shift v and the up/down keys.
+
+To then indent the marked lines press > or < and to repeat the action press .
+
+Vim
+Be great with vim.
+
+toggle vim line numbers
+
+When in vim you can press Esc and type :set number or :set nonumber followed by Enter to toggle line numbers. This can be useful when finding syntax errors based on line - but can be bad when wanting to mark&copy by mouse. You can also just jump to a line number with Esc :22 + Enter.
+
+copy&paste
+
+Get used to copy/paste/cut with vim:
+
+Mark lines: Esc+V (then arrow keys)
+Copy marked lines: y
+Cut marked lines: d
+Past lines: p or P
+Indent multiple lines
+
+To indent multiple lines press Esc and type :set shiftwidth=2. First mark multiple lines using Shift v and the up/down keys. Then to indent the marked lines press > or <. You can then press . to repeat the action.
+
+Quickest way to create resources:
+
+storageclass, pv, pvc,   from kubernetes document sample
+pod, deploy, svc, from kubectl and then amend with sample
+
+➜ k -n mercury logs cleaner-576967576c-cqtgx -c logger-con
+
+➜ k -n mars get all
+
+what is endpoint?
+
+service can be accessed via "service-name.namespace" url, like 
+Short manager-api-svc.mars or long manager-api-svc.mars.svc.cluster.local work.
+
+➜ k run tmp --restart=Never --rm -i --image=nginx:alpine -- curl -m 5 manager-api-svc.mars:4444
+
+➜ k -n venus exec frontend-789cbdc677-c9v8h -- wget -O- www.google.com
+
+➜ k -n venus exec frontend-789cbdc677-c9v8h -- wget -O- www.google.de 
+Connecting to www.google.de:2222 (216.58.207.67:80)
+^C
+
+➜ k -n venus exec frontend-789cbdc677-c9v8h -- wget -O- -T 5 www.google.de:80 
+Connecting to www.google.com (172.217.203.104:80)
+wget: download timed out
+command terminated with exit code 1
+
+
+
+
+
+
+
 
 
 
